@@ -1,0 +1,2 @@
+* Nixos configuration
+This repository holds my nixos configuration
