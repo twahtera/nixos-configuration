@@ -44,7 +44,6 @@
     pkgs.peek
     #pkgs.python39Full
     pkgs.ghc
-    pkgs.gh
     pkgs.gimp
     #pkgs.glxinfo
     pkgs.gnumake
@@ -235,6 +234,7 @@
     inactiveInterval = 1;
     lockCmd = "${pkgs.slock}/bin/slock";
   };
+
   programs.home-manager.enable = true;
   programs.man.enable = true;
   services.flameshot.enable = true;
@@ -318,6 +318,4 @@
   # changes in each release.
   home.stateVersion = "24.11";
 
-  # Let home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
