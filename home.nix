@@ -6,7 +6,7 @@
 
   home.packages = [
     # devenv
-    (import (fetchTarball https://install.devenv.sh/latest)).default
+#    (import (fetchTarball https://install.devenv.sh/latest)).default
 
     pkgs.anki
     pkgs.arandr
