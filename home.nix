@@ -23,7 +23,7 @@
     #pkgs.binutils-unwrapped
     pkgs.cachix
     pkgs.cantarell-fonts
-    pkgs.chromium
+#    pkgs.chromium
     pkgs.gnome.cheese
     pkgs.gthumb
     pkgs.gcc

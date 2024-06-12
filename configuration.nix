@@ -11,7 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-fb066378-3578-4e0c-8637-6fa88cf9db70".device = "/dev/disk/by-uuid/fb066378-3578-4e0c-8637-6fa88cf9db70";
-  networking.hostName = "seki"; # Define your hostname.
+  networking.hostName = "seki";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
