@@ -35,18 +35,27 @@
     LC_TIME = "fi_FI.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
+  #services.desktopManager.plasma6.enable = true;
+  #services.xserver.displayManager.lightdm = {
+  #  enable = true;
+  #  greeters.slick.enable = true;
+  #};
+  
   # Configure keymap in X11
   services.xserver = {
+    enable = true;
     layout = "fi";
     xkbVariant = "";
+
+    videoDrivers = [ "modesetting" ];
+
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      enableConfiguredRecompile = true;
+    };
   };
 
   # Configure console keymap
@@ -66,19 +75,24 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
+  # laptop stuff
+  services.thermald.enable = true;
+  powerManagement.powertop.enable = true;
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.twah = {
     isNormalUser = true;
     description = "Tuukka Wahtera";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
       kdePackages.kate
       git
       wget
       curl
       htop
+      rxvt-unicode
     ];
   };
 
@@ -94,6 +108,15 @@
   environment.systemPackages = with pkgs; [ ];
   services.openssh.enable = true;
 
+  programs.light.enable = true; # Needed for the /run/wrappers/bin/light SUId wrapper.
+  services.actkbd = {
+    enable = true;
+    bindings = [
+      { keys = [ 224 ]; events = [ "key" ]; command = "/run/wrappers/bin/light -A 10"; }
+      { keys = [ 225]; events = [ "key" ]; command = "/run/wrappers/bin/light -U 10"; }
+    ];
+  };
+  
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
