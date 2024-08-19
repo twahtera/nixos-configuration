@@ -23,8 +23,8 @@
     #pkgs.binutils-unwrapped
     pkgs.cachix
     pkgs.cantarell-fonts
-#    pkgs.chromium
-    pkgs.gnome.cheese
+    pkgs.chromium
+    pkgs.cheese
     pkgs.gthumb
     pkgs.gcc
     pkgs.dbeaver-bin
@@ -63,11 +63,10 @@
     pkgs.keepassxc
     pkgs.libnotify
     pkgs.libreoffice-still
-    pkgs.lorri
     pkgs.lm_sensors
     pkgs.spotifywm
     #pkgs.super-slicer
-    pkgs.microsoft-edge
+    # pkgs.microsoft-edge
     #pkgs.musescore
     pkgs.mcelog
     pkgs.mpv
@@ -107,13 +106,13 @@
     #pkgs.syncthing-gtk
     pkgs.sqlite
     pkgs.tree
-    pkgs.transmission-gtk
+    pkgs.transmission_3-gtk
     pkgs.texlive.combined.scheme-full
     #pkgs.tasksh
     pkgs.unison-ucm
     pkgs.units
     pkgs.unzip
-    pkgs.youtube-dl
+    # pkgs.youtube-dl # unmaintained!
     #pkgs.mpv
     pkgs.v4l-utils
     pkgs.vlc
@@ -307,11 +306,6 @@
     end
     '';
   };
-
-  xsession.initExtra = ''
-    xsetroot -solid black
-    das
-    '';
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
