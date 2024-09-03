@@ -90,7 +90,8 @@
       nvidiaSettings = true;
 
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_535; # newer ones seem to crash
+      #package = config.boot.kernelPackages.nvidiaPackages.beta;
 
       prime = {
         sync.enable = true;
@@ -147,7 +148,7 @@
   users.users.twah = {
     isNormalUser = true;
     description = "Tuukka Wahtera";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "docker" ];
     packages = with pkgs; [
       git
       wget
@@ -166,6 +167,8 @@
     configDir = "/home/twah/.config/syncthing";
     dataDir = "/home/twah/.config/syncthing/db";
   };
+
+  virtualisation.docker.enable = true;
 
   services.physlock = {
     enable = true;
