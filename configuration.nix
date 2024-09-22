@@ -59,7 +59,7 @@
   };
 
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
 
     nvidia = {
 
@@ -173,11 +173,11 @@
   services.physlock = {
     enable = true;
     allowAnyUser = true;
+    muteKernelMessages = true;
   };
 
   services.blueman.enable = true;
 
-  # Install firefox.
   programs.firefox.enable = true;
 
   # Allow unfree packages

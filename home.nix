@@ -44,6 +44,7 @@
     pkgs.peek
     #pkgs.python39Full
     pkgs.ghc
+    pkgs.gh
     pkgs.gimp
     #pkgs.glxinfo
     pkgs.gnumake
@@ -285,6 +286,23 @@
     };
 
   };
+
+  # gtk = {
+  #   enable = true;
+  #   cursorTheme = {
+  #     package = pkgs.catppuccin-cursors.mochaSapphire;
+  #     name = "catppuccin-mocha-sapphire-cursors";
+  #   };
+  # };
+
+  # home.pointerCursor = {
+  #   x11.enable = true;
+  #   gtk.enable = true;
+  #   package = pkgs.catppuccin-cursors.mochaSapphire;
+  #   name = "catppuccin-mocha-sapphire-cursors";
+  #   size = 48;
+  # };
+
 
   programs.fish = {
     enable = true;
