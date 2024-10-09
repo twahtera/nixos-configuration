@@ -6,7 +6,7 @@
 
   home.packages = [
     # devenv
-    (import (fetchTarball https://install.devenv.sh/latest)).default
+    pkgs.devenv
 
     pkgs.anki
     pkgs.arandr
@@ -109,12 +109,10 @@
     pkgs.tree
     pkgs.transmission-gtk
     pkgs.texlive.combined.scheme-full
-    #pkgs.tasksh
     pkgs.unison-ucm
     pkgs.units
     pkgs.unzip
-    pkgs.youtube-dl
-    #pkgs.mpv
+    pkgs.mpv
     pkgs.v4l-utils
     pkgs.vlc
     pkgs.wally-cli # flasher for ergodox

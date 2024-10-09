@@ -14,11 +14,23 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    # Please replace my-nixos with your hostname
     nixosConfigurations.seki = nixpkgs.lib.nixosSystem {
       system = "x86_64-GNU/Linux";
       modules = [
         ./configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.twah = import ./home.nix;
+        }
+      ];
+    };
+
+    nixosConfigurations.furikawari = nixpkgs.lib.nixosSystem {
+      system = "x86_64-GNU/Linux";
+      modules = [
+        ./furikawari/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
