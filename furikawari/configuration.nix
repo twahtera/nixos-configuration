@@ -21,8 +21,11 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  powerManagement.enable = true;
+  #services.tlp.enable = true;
+  services.power-profiles-daemon.enable = true;
+  powerManagement.powertop.enable = true;
+# Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -46,7 +49,7 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    #desktopManager.gnome.enable = true;
 
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;

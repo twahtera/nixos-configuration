@@ -10,6 +10,7 @@
 
     pkgs.anki
     pkgs.arandr
+    pkgs.aws-vault
     pkgs.aria2
 #    pkgs.arduino
 #    pkgs.autoconf
@@ -24,7 +25,7 @@
     pkgs.cachix
     pkgs.cantarell-fonts
     pkgs.chromium
-    pkgs.gnome.cheese
+    pkgs.cheese
     pkgs.gthumb
     pkgs.gcc
     pkgs.dbeaver-bin
@@ -107,7 +108,7 @@
     #pkgs.syncthing-gtk
     pkgs.sqlite
     pkgs.tree
-    pkgs.transmission-gtk
+    pkgs.transmission_3-gtk
     pkgs.texlive.combined.scheme-full
     pkgs.unison-ucm
     pkgs.units
