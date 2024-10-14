@@ -43,6 +43,7 @@
     #(pkgs.freecad.override { spaceNavSupport = false; }) # spaceNavSupport causes segfault on start
     pkgs.freecad
     pkgs.peek
+    pkgs.pnpm_8
     #pkgs.python39Full
     pkgs.ghc
     pkgs.gimp
@@ -133,6 +134,8 @@
   home.sessionVariables = {
     GTK_IM_MODULE="ibus";
     QT_IM_MODULE="ibus";
+    AWS_VAULT_BACKEND="file";
+    AWS_SESSION_TOKEN_TTL="8h";
   };
 
   home.file.".local/share/applications/emacsclient.desktop".text =
@@ -306,6 +309,8 @@
     end
     '';
   };
+
+
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

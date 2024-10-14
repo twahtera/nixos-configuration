@@ -96,7 +96,7 @@
   users.users.twah = {
     isNormalUser = true;
     description = "Tuukka Wahtera";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
 	    git
       rxvt-unicode
@@ -135,7 +135,7 @@
   # };
 
   # List services that you want to enable:
-
+  virtualisation.docker.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
