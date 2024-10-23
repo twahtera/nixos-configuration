@@ -24,7 +24,7 @@
   powerManagement.enable = true;
   #services.tlp.enable = true;
   services.power-profiles-daemon.enable = true;
-  powerManagement.powertop.enable = true;
+  # powerManagement.powertop.enable = true;
 # Enable networking
   networking.networkmanager.enable = true;
 
@@ -118,6 +118,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = ["root" "twah"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
