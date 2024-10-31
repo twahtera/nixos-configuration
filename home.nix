@@ -219,6 +219,7 @@
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+  programs.direnv.enableBashIntegration = true;
   programs.fzf.enable = true;
   programs.z-lua = {
     enable = true;
@@ -308,8 +309,6 @@
     end
     '';
   };
-
-
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
