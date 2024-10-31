@@ -15,6 +15,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-7ffe902e-5bf4-4d4e-a465-7d531c3c71e2".device = "/dev/disk/by-uuid/7ffe902e-5bf4-4d4e-a465-7d531c3c71e2";
+
+  boot.kernelModules = [ "amdgpu" ];
   networking.hostName = "furikawari"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -22,7 +24,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   powerManagement.enable = true;
-  #services.tlp.enable = true;
   services.power-profiles-daemon.enable = true;
   # powerManagement.powertop.enable = true;
 # Enable networking
