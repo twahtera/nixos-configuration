@@ -31,6 +31,7 @@
     pkgs.bind
     pkgs.dmenu
     pkgs.evince
+    pkgs.emacs-lsp-booster
     (pkgs.emacs29.override { imagemagick = pkgs.imagemagickBig; })
 
     #pkgs.eagle
