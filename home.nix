@@ -231,11 +231,8 @@
     enable = true;
     enableFishIntegration = false; # this is broken
   };
-  services.screen-locker = {
-    enable = true;
-    inactiveInterval = 1;
-    lockCmd = "${pkgs.slock}/bin/slock";
-  };
+
+  services.kdeConnect.enable = true;
 
   programs.home-manager.enable = true;
   programs.man.enable = true;
