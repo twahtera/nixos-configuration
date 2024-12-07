@@ -6,10 +6,11 @@
 
   home.packages = [
     # devenv
-#    (import (fetchTarball https://install.devenv.sh/latest)).default
+    pkgs.devenv
 
     pkgs.anki
     pkgs.arandr
+    pkgs.aws-vault
     pkgs.aria2
 #    pkgs.arduino
 #    pkgs.autoconf
@@ -31,8 +32,7 @@
     pkgs.bind
     pkgs.dmenu
     pkgs.evince
-    pkgs.emacs-lsp-booster
-    (pkgs.emacs29.override { imagemagick = pkgs.imagemagickBig; })
+    (pkgs.emacs30.override { imagemagick = pkgs.imagemagickBig; })
 
     #pkgs.eagle
     pkgs.exiftool
@@ -45,7 +45,6 @@
     pkgs.peek
     #pkgs.python39Full
     pkgs.ghc
-    pkgs.gh
     pkgs.gimp
     #pkgs.glxinfo
     pkgs.gnumake
@@ -65,10 +64,11 @@
     pkgs.keepassxc
     pkgs.libnotify
     pkgs.libreoffice-still
+    pkgs.lorri
     pkgs.lm_sensors
     pkgs.spotifywm
     #pkgs.super-slicer
-    # pkgs.microsoft-edge
+    pkgs.microsoft-edge
     #pkgs.musescore
     pkgs.mcelog
     pkgs.mpv
@@ -89,7 +89,7 @@
     pkgs.plantuml
     pkgs.piper # control logitech mouse
     pkgs.powertop
-    pkgs.postgresql_12
+    pkgs.postgresql_17
     pkgs.pgcli
     pkgs.pydf
     pkgs.qjackctl
@@ -110,12 +110,10 @@
     pkgs.tree
     pkgs.transmission_3-gtk
     pkgs.texlive.combined.scheme-full
-    #pkgs.tasksh
     pkgs.unison-ucm
     pkgs.units
     pkgs.unzip
-    # pkgs.youtube-dl # unmaintained!
-    #pkgs.mpv
+    pkgs.mpv
     pkgs.v4l-utils
     pkgs.vlc
     pkgs.wally-cli # flasher for ergodox
@@ -135,6 +133,8 @@
   home.sessionVariables = {
     GTK_IM_MODULE="ibus";
     QT_IM_MODULE="ibus";
+    AWS_VAULT_BACKEND="file";
+    AWS_SESSION_TOKEN_TTL="8h";
   };
 
   home.file.".local/share/applications/emacsclient.desktop".text =
@@ -219,6 +219,7 @@
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+  programs.direnv.enableBashIntegration = true;
   programs.fzf.enable = true;
   programs.z-lua = {
     enable = true;
@@ -287,23 +288,6 @@
     };
 
   };
-
-  # gtk = {
-  #   enable = true;
-  #   cursorTheme = {
-  #     package = pkgs.catppuccin-cursors.mochaSapphire;
-  #     name = "catppuccin-mocha-sapphire-cursors";
-  #   };
-  # };
-
-  # home.pointerCursor = {
-  #   x11.enable = true;
-  #   gtk.enable = true;
-  #   package = pkgs.catppuccin-cursors.mochaSapphire;
-  #   name = "catppuccin-mocha-sapphire-cursors";
-  #   size = 48;
-  # };
-
 
   programs.fish = {
     enable = true;
