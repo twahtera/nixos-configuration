@@ -232,7 +232,7 @@
     enableFishIntegration = false; # this is broken
   };
 
-  services.kdeConnect.enable = true;
+  services.kdeconnect.enable = true;
 
   programs.home-manager.enable = true;
   programs.man.enable = true;
