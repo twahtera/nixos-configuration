@@ -74,6 +74,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -103,6 +106,11 @@
       rxvt-unicode
     #  thunderbird
     ];
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
   };
 
   services.syncthing = {
@@ -140,10 +148,12 @@
   virtualisation.docker.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.fwupd.enable = true;
 
   services.physlock = {
     enable = true;
     muteKernelMessages = true;
+    allowAnyUser = true;
   };
   system.stateVersion = "24.05"; # Did you read the comment?
 

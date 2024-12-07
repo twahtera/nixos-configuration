@@ -32,7 +32,7 @@
     pkgs.bind
     pkgs.dmenu
     pkgs.evince
-    (pkgs.emacs29.override { imagemagick = pkgs.imagemagickBig; })
+    (pkgs.emacs30.override { imagemagick = pkgs.imagemagickBig; })
 
     #pkgs.eagle
     pkgs.exiftool
@@ -89,7 +89,7 @@
     pkgs.plantuml
     pkgs.piper # control logitech mouse
     pkgs.powertop
-    pkgs.postgresql_12
+    pkgs.postgresql_17
     pkgs.pgcli
     pkgs.pydf
     pkgs.qjackctl
