@@ -17,7 +17,7 @@
     nixosConfigurations.seki = nixpkgs.lib.nixosSystem {
       system = "x86_64-GNU/Linux";
       modules = [
-        ./configuration.nix
+        ./seki/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -32,6 +32,20 @@
       system = "x86_64-GNU/Linux";
       modules = [
         ./furikawari/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.backupFileExtension = "backup";
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.twah = import ./home.nix;
+        }
+      ];
+    };
+    
+    nixosConfigurations.kaketsugi = nixpkgs.lib.nixosSystem {
+      system = "x86_64-GNU/Linux";
+      modules = [
+        ./kaketsugi/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.backupFileExtension = "backup";
