@@ -28,6 +28,7 @@
   # powerManagement.powertop.enable = true;
 # Enable networking
   networking.networkmanager.enable = true;
+  programs.kdeconnect.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Helsinki";
