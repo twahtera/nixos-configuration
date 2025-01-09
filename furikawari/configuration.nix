@@ -55,11 +55,9 @@
 
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
-
+    deviceSection = ''Option "TearFree" "true"''; # For amdgpu.
   };
-  # Enable the X11 windowing system.
-
-
+  
   # Enable the GNOME Desktop Environment.
 
 
