@@ -13,22 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.seki = nixpkgs.lib.nixosSystem {
-      system = "x86_64-GNU/Linux";
-      modules = [
-        ./seki/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.twah = import ./home.nix;
-          home-manager.backupFileExtension = "backup";
-        }
-      ];
-    };
-
-    nixosConfigurations.furikawari = nixpkgs.lib.nixosSystem {
+  nixosConfigurations.furikawari = nixpkgs.lib.nixosSystem {
       system = "x86_64-GNU/Linux";
       modules = [
         ./furikawari/configuration.nix
@@ -38,6 +23,26 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.twah = import ./home.nix;
+
+          home.username = "twah";
+          home.homeDirectory = "/home/twah";
+        }
+      ];
+    };
+
+    nixosConfigurations.sabaki = nixpkgs.lib.nixosSystem {
+      system = "x86_64-GNU/Linux";
+      modules = [
+        ./sabaki/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.backupFileExtension = "backup";
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.twah = import ./home.nix;
+
+          home.username = "ent";
+          home.homeDirectory = "/home/ent";
         }
       ];
     };
@@ -52,6 +57,10 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.twah = import ./home.nix;
+
+          home.username = "ent";
+          home.homeDirectory = "/home/ent";
+
         }
       ];
     };
