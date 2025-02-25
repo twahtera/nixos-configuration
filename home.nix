@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{username}: { config, pkgs, ... }:
 
 {
-  home.username = "twah";
-  home.homeDirectory = "/home/twah";
+  home.username = username;
+  home.homeDirectory = "/home/" + username;
 
   home.packages = [
     # devenv
