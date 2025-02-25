@@ -14,55 +14,54 @@
   };
 
   nixosConfigurations.furikawari = nixpkgs.lib.nixosSystem {
-      system = "x86_64-GNU/Linux";
-      modules = [
-        ./furikawari/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.twah = import ./home.nix;
-
-          home.username = "twah";
-          home.homeDirectory = "/home/twah";
-        }
-      ];
-    };
-
-    nixosConfigurations.sabaki = nixpkgs.lib.nixosSystem {
-      system = "x86_64-GNU/Linux";
-      modules = [
-        ./sabaki/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.twah = import ./home.nix;
-
-          home.username = "ent";
-          home.homeDirectory = "/home/ent";
-        }
-      ];
-    };
-    
-    nixosConfigurations.kaketsugi = nixpkgs.lib.nixosSystem {
-      system = "x86_64-GNU/Linux";
-      modules = [
-        ./kaketsugi/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.twah = import ./home.nix;
-
-          home.username = "ent";
-          home.homeDirectory = "/home/ent";
-
-        }
-      ];
-    };
+    system = "x86_64-GNU/Linux";
+    modules = [
+      ./furikawari/configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.backupFileExtension = "backup";
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.twah = import ./home.nix;
+        
+        home.username = "twah";
+        home.homeDirectory = "/home/twah";
+      }
+    ];
   };
-}
+
+  nixosConfigurations.sabaki = nixpkgs.lib.nixosSystem {
+    system = "x86_64-GNU/Linux";
+    modules = [
+      ./sabaki/configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.backupFileExtension = "backup";
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.twah = import ./home.nix;
+        
+        home.username = "ent";
+        home.homeDirectory = "/home/ent";
+      }
+    ];
+  };
+    
+  nixosConfigurations.kaketsugi = nixpkgs.lib.nixosSystem {
+    system = "x86_64-GNU/Linux";
+    modules = [
+      ./kaketsugi/configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.backupFileExtension = "backup";
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.twah = import ./home.nix;
+        
+        home.username = "ent";
+        home.homeDirectory = "/home/ent";
+        
+      }
+    ];
+  };
+};
