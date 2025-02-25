@@ -23,10 +23,7 @@
           home-manager.backupFileExtension = "backup";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.twah = import ./home.nix;
-        
-          home.username = "twah";
-          home.homeDirectory = "/home/twah";
+          home-manager.users.twah = import ./home.nix {username = "twah";};
         }
       ];
     };
@@ -40,7 +37,7 @@
           home-manager.backupFileExtension = "backup";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.twah = import ./home.nix {username = "ent";}
+          home-manager.users.ent = import ./home.nix {username = "ent";};
         }
       ];
     };
@@ -54,10 +51,7 @@
           home-manager.backupFileExtension = "backup";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.twah = import ./home.nix;
-        
-          home.username = "ent";
-          home.homeDirectory = "/home/ent";
+          home-manager.users.ent = import ./home.nix {username = "ent";};
         }
       ];
     };
