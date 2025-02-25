@@ -40,10 +40,11 @@
           home-manager.backupFileExtension = "backup";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.twah = import ./home.nix;
-          
-          home.username = "ent";
-          home.homeDirectory = "/home/ent";
+          home-manager.users.twah =
+            import ./home.nix // {
+              home.username = "ent";
+              home.homeDirectory = "/home/ent";
+            }
         }
       ];
     };
