@@ -129,6 +129,15 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    user = "twah";
+    group = "users";
+    openDefaultPorts = true;
+    configDir = "/home/twah/.config/syncthing";
+    dataDir = "/home/twah/.config/syncthing/db";
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

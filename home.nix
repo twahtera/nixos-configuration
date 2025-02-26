@@ -234,7 +234,6 @@
 
   programs.home-manager.enable = true;
   programs.man.enable = true;
-  services.flameshot.enable = true;
 
   programs.autorandr = {
     enable = true;

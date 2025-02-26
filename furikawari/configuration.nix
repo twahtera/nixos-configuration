@@ -120,6 +120,7 @@
     configDir = "/home/twah/.config/syncthing";
     dataDir = "/home/twah/.config/syncthing/db";
   };
+
   # Install firefox.
   programs.firefox.enable = true;
 
