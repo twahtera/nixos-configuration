@@ -131,11 +131,11 @@
 
   services.syncthing = {
     enable = true;
-    user = "twah";
+    user = "ent";
     group = "users";
     openDefaultPorts = true;
-    configDir = "/home/twah/.config/syncthing";
-    dataDir = "/home/twah/.config/syncthing/db";
+    configDir = "/home/ent/.config/syncthing";
+    dataDir = "/home/ent/.config/syncthing/db";
   };
 
   # Open ports in the firewall.
