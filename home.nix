@@ -27,6 +27,7 @@
     pkgs.chromium
     pkgs.cheese
     pkgs.gthumb
+    pkgs.git
     pkgs.gcc
     pkgs.dbeaver-bin
     pkgs.bind
