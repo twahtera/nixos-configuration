@@ -187,7 +187,8 @@
     enable = true;
   };
 
-  services.undervolt.enable = {
+  services.undervolt = {
+    enable = true;
     temp = 97;
     coreOffset = 150;
     gpuOffset = 100;
