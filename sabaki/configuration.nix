@@ -190,9 +190,9 @@
   services.undervolt = {
     enable = true;
     temp = 97;
-    coreOffset = 150;
-    gpuOffset = 100;
-    uncoreOffset = 100;
+    coreOffset = -150;
+    gpuOffset = -100;
+    uncoreOffset = -100;
   };
 
   # Open ports in the firewall.
