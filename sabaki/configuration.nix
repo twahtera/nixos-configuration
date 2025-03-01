@@ -185,6 +185,47 @@
 
   services.thinkfan = {
     enable = true;
+
+    # Tuples of [level Low High] where level is the fan
+    # speed. "level auto" for firmware default.
+    # Low is the level at which to step down, high at which to step up
+    levels = [
+      [
+        0
+        0
+        55
+      ]
+      [
+        1
+        53
+        65
+      ]
+      [
+        2
+        63
+        70
+      ]
+      [
+        3
+        68
+        75
+      ]
+      [
+        6
+        73
+        80
+      ]
+      [
+        7
+        58
+        85
+      ]
+      [
+        "level auto"
+        80
+        32767
+      ];
+    ]
   };
 
   services.undervolt = {
