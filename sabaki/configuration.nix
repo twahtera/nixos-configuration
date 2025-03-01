@@ -183,6 +183,17 @@
   #   # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
   # };
 
+  services.thinkfan = {
+    enable = true;
+  };
+
+  services.undervolt.enable = {
+    temp = 97;
+    coreOffset = 150;
+    gpuOffset = 100;
+    uncoreOffset = 100;
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
