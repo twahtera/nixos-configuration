@@ -190,41 +190,13 @@
     # speed. "level auto" for firmware default.
     # Low is the level at which to step down, high at which to step up
     levels = [
-      [
-        0
-        0
-        55
-      ]
-      [
-        1
-        53
-        65
-      ]
-      [
-        2
-        63
-        70
-      ]
-      [
-        3
-        68
-        75
-      ]
-      [
-        6
-        73
-        80
-      ]
-      [
-        7
-        58
-        85
-      ]
-      [
-        "level auto"
-        80
-        32767
-      ]
+      [ 0  0 60 ]
+      [ 1 58 70 ]
+      [ 2 68 75 ]
+      [ 3 63 80 ]
+      [ 6 78 85 ]
+      [ 7 83 90 ]
+      [ "level auto" 88 32767 ]
     ];
   };
 
