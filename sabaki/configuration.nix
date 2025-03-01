@@ -225,7 +225,7 @@
         80
         32767
       ];
-    ]
+    ];
   };
 
   services.undervolt = {
