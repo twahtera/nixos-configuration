@@ -83,7 +83,6 @@
     pkgs.nodejs
     pkgs.openscad
     pkgs.openvpn
-    pkgs.okular
     pkgs.pandoc
     pkgs.poppler_utils
     pkgs.pavucontrol
@@ -191,7 +190,7 @@
     };
 
     mimeApps.defaultApplications = {
-      "application/pdf" = [ "okularApplication_pdf.desktop" ];
+      "application/pdf" = [ "evince.desktop" ];
       "x-scheme-handler/https" = [ "firefox.desktop" ];
       "x-scheme-handler/http" = [ "firefox.desktop" ];
       "x-scheme-handler/ftp" = [ "firefox.desktop" ];
