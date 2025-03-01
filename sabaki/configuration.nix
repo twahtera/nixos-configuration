@@ -61,6 +61,7 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -174,15 +175,13 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # hardware.nvidia.prime = {
-  #   sync.enable = true;
-
-  #   # Make sure to use the correct Bus ID values for your system!
-  #   nvidiaBusId = "PCI:14:0:0";
-  #   intelBusId = "PCI:0:2:0";
-  #   # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
-  # };
-
+  hardware.nvidia.prime = {
+    sync.enable = true;
+    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+    intelBusId = "PCI:0:2:0";
+    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+    nvidiaBusId = "PCI:1:0:0";
+  };
   services.thinkfan = {
     enable = true;
 
