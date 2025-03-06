@@ -148,6 +148,16 @@
     MimeType=x-scheme-handler/org-protocol;
     '';
 
+  home.file.".local/share/applications/ytdlp-get.desktop".text =
+    ''
+    [Desktop Entry]
+    Name=Ytdlp-stream Protocol handler
+    Exec=ytdlp-get %u
+    Type=Application
+    MimeType=x-scheme-handler/ytdlp-get;
+    NoDisplay=true
+    '';
+  
   home.file.".psqlrc".text =
     ''
     \set QUIET 1
@@ -174,6 +184,7 @@
   xdg = {
     mime.enable = true;
     mimeApps.enable = true;
+    stateHome = "/home/" + username + "/.local/state";
 
     mimeApps.associations.added = {
       "x-scheme-handler/http" = ["firefox.desktop"];
@@ -186,11 +197,12 @@
       "text/xml" = ["emacsclient.desktop"];
       "text/html" = ["firefox.desktop"];
       "x-scheme-handler/org-protocol" = ["emacsclient.desktop"];
+      "x-scheme-handler/ytdlp-get" = ["ytdlp-get.desktop"];
       "image/jpeg" = ["firefox.desktop"];
     };
 
     mimeApps.defaultApplications = {
-      "application/pdf" = [ "evince.desktop" ];
+      "application/pdf" = [ "okularApplication_pdf.desktop" ];
       "x-scheme-handler/https" = [ "firefox.desktop" ];
       "x-scheme-handler/http" = [ "firefox.desktop" ];
       "x-scheme-handler/ftp" = [ "firefox.desktop" ];
@@ -235,54 +247,6 @@
   programs.home-manager.enable = true;
   programs.man.enable = true;
 
-  programs.autorandr = {
-    enable = true;
-
-    profiles = {
-      "work" = {
-        fingerprint = {
-          DP-0 = "00ffffffffffff0010acf4a04c4e3530171c0104b55825783eee95a3544c99260f5054a54b00714f81008180a940d1c00101010101014c9a00a0f0402e6030203a00706f3100001a000000ff00354b43303338363530354e4c0a000000fc0044454c4c20553338313844570a000000fd001855197328000a20202020202001f002031af14d9005040302071601141f12135a2309070783010000023a801871382d40582c4500706f3100001e565e00a0a0a0295030203500706f3100001acd4600a0a0381f4030203a00706f3100001a2d5080a070402e6030203a00706f3100001a134c00a0f040176030203a00706f3100001a000000000000000000000053";
-          DP-2 = "00ffffffffffff0006afeb3200000000251b0104a5221378020925a5564f9b270c50540000000101010101010101010101010101010152d000a0f0703e803020350058c1100000180000000f0000000000000000000000000020000000fe0041554f0a202020202020202020000000fe00423135365a414e30332e32200a000d";
-        };
-        config = {
-          DP-2.enable = false;
-          DP-0 = {
-            enable = true;
-            primary = true;
-            mode = "3840x1600";
-          };
-        };
-      };
-      "work2" = {
-        fingerprint = {
-          DP-1 = "00ffffffffffff0010acf4a04c4e3530171c0104b55825783eee95a3544c99260f5054a54b00714f81008180a940d1c00101010101014c9a00a0f0402e6030203a00706f3100001a000000ff00354b43303338363530354e4c0a000000fc0044454c4c20553338313844570a000000fd001855197328000a20202020202001f002031af14d9005040302071601141f12135a2309070783010000023a801871382d40582c4500706f3100001e565e00a0a0a0295030203500706f3100001acd4600a0a0381f4030203a00706f3100001a2d5080a070402e6030203a00706f3100001a134c00a0f040176030203a00706f3100001a000000000000000000000053";
-          DP-2 = "00ffffffffffff0006afeb3200000000251b0104a5221378020925a5564f9b270c50540000000101010101010101010101010101010152d000a0f0703e803020350058c1100000180000000f0000000000000000000000000020000000fe0041554f0a202020202020202020000000fe00423135365a414e30332e32200a000d";
-        };
-        config = {
-          DP-2.enable = false;
-          DP-1 = {
-            enable = true;
-            primary = true;
-            mode = "3840x1600";
-          };
-        };
-      };
-      "mobile" = {
-        fingerprint = {
-          DP-2 = "00ffffffffffff0006afeb3200000000251b0104a5221378020925a5564f9b270c50540000000101010101010101010101010101010152d000a0f0703e803020350058c1100000180000000f0000000000000000000000000020000000fe0041554f0a202020202020202020000000fe00423135365a414e30332e32200a000d";
-        };
-        config = {
-          DP-2 = {
-            enable = true;
-            primary = true;
-            mode = "3840x2160";
-          };
-        };
-      };
-    };
-
-  };
-
   programs.fish = {
     enable = true;
 
@@ -313,5 +277,5 @@
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "24.11";
-
+  #home.stateVersion = "18.09";
 }

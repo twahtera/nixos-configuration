@@ -20,7 +20,7 @@
   }];
 
   powerManagement.cpuFreqGovernor = "performance";
-
+    
   # fileSystems."/home".device = "/dev/disk/by-label/home";
   fileSystems."/home".device = "/dev/disk/by-uuid/fba97cf9-9f6e-41a3-95ee-954da238fa5d";
   # fileSystems."/vm".device = "/dev/disk/by-label/win";
@@ -46,21 +46,21 @@
 
   virtualisation.docker.enable = true;
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        }).fd];
-      };
-    };
-  };
+  # virtualisation.libvirtd = {
+  #   enable = true;
+  #   qemu = {
+  #     package = pkgs.qemu_kvm;
+  #     runAsRoot = true;
+  #     swtpm.enable = true;
+  #     ovmf = {
+  #       enable = true;
+  #       packages = [(pkgs.OVMF.override {
+  #         secureBoot = true;
+  #         tpmSupport = true;
+  #       }).fd];
+  #     };
+  #   };
+  # };
 
 
   programs.virt-manager.enable = true;
@@ -110,6 +110,12 @@
     repo = "ssh://entgod@kapsi.fi:22/home/users/entgod/siilo/borg/home-ent";
     compression = "auto,zstd";
     startAt = "daily";
+  };
+
+  services.ollama = {
+    enable = true;
+
+    
   };
 
   # services.openvpn.servers.tofumanDevVpn.config = "/home/ent/download/cvpn-endpoint-0d73c35031acbf471.ovpn";
@@ -178,7 +184,7 @@
   nixpkgs.config = {
     allowUnfree = true;
   };
-
+  
   # hardware.pulseaudio = {
   #   enable = true;
   #   package = pkgs.pulseaudio.override { jackaudioSupport = true; };
@@ -204,56 +210,6 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
-    # SLN: remove this stuff once it looks like everything works
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    # #media-session.enable = true;
-    # config.pipewire = {
-    #   "context.properties" = {
-    #   "link.max-buffers" = 8;
-    #   "log.level" = 2;
-    #   "default.clock.rate" = 96000;
-
-    #   # "default.clock.quantum" = 32;
-    #   # "default.clock.min-quantum" = 32;
-    #   # "default.clock.max-quantum" = 32;
-    #   # "core.daemon" = true;
-    #   # "core.name" = "pipewire-0";
-
-    #   "api.alsa.period-size" = 2;
-    # };
-    # "context.modules" = [
-    #   {
-    #     name = "libpipewire-module-rtkit";
-    #     args = {
-    #       "nice.level" = -15;
-    #       "rt.prio" = 88;
-    #       "rt.time.soft" = 200000;
-    #       "rt.time.hard" = 200000;
-    #     };
-    #     flags = [ "ifexists" "nofail" ];
-    #   }
-    #   { name = "libpipewire-module-protocol-native"; }
-    #   { name = "libpipewire-module-profiler"; }
-    #   { name = "libpipewire-module-metadata"; }
-    #   { name = "libpipewire-module-spa-device-factory"; }
-    #   { name = "libpipewire-module-spa-node-factory"; }
-    #   { name = "libpipewire-module-client-node"; }
-    #   { name = "libpipewire-module-client-device"; }
-    #   {
-    #     name = "libpipewire-module-portal";
-    #     flags = [ "ifexists" "nofail" ];
-    #   }
-    #   {
-    #     name = "libpipewire-module-access";
-    #     args = {};
-    #   }
-    #   { name = "libpipewire-module-adapter"; }
-    #   { name = "libpipewire-module-link-factory"; }
-    #   { name = "libpipewire-module-session-manager"; }
-    #   ];
-    # };
   };
 
 
@@ -313,7 +269,7 @@
       xorg.libXi
       xorg.libSM
       xorg.libICE
-      gnome2.GConf
+      #gnome2.GConf
       nspr
       nss
       cups
@@ -361,7 +317,7 @@
       pixman
       speex
       SDL_image
-      SDL_ttf
+#      SDL_ttf  # has open cve
       SDL_mixer
       SDL2_ttf
       SDL2_mixer
@@ -377,7 +333,7 @@
       libvdpau
       # ...
       # Some more libraries that I needed to run programs
-      gnome2.pango
+      pango
       cairo
       atk
       gdk-pixbuf
@@ -411,19 +367,19 @@
   # https://github.com/Mic92/envfs
   services.envfs.enable = true;
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   # Enable the X11 windowing system.
   services.xserver = {
     exportConfiguration = true;
     enable = true;
-    layout = "fi";
+    xkb.layout = "fi";
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
     videoDrivers = ["amdgpu"];
-    libinput.enable = true;
-    libinput.touchpad.middleEmulation = false;
     config = ''
       Section "InputClass"
         Identifier "My Mouse"
@@ -434,7 +390,7 @@
       EndSection
     '';
 
-
+    
     deviceSection = ''
 #    Section "Device"
       Option "SWCursor" "on"
@@ -443,6 +399,7 @@
 #    EndSection
     '';
   };
+
   # services.xserver.xkbOptions = "eurosign:e";
 
   documentation.info.enable = true;
@@ -476,10 +433,10 @@
 
   security.polkit.enable = true;
 
-  security.sudo.extraConfig =
+  security.sudo.extraConfig = 
     ''
   %libvirtd ALL = NOPASSWD:  /run/current-system/sw/bin/virsh start win
-
+                            
   '';
 
   services.udev.extraRules =
