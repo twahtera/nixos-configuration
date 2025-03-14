@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  hardware.pulseaudio.daemon.config =
+  services.pulseaudio.daemon.config =
     {
       high-priority = "yes";
       nice-level = "-15";

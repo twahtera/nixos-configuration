@@ -2,6 +2,7 @@
 
 {
   home.username = username;
+  home.keyboard = null;
   home.homeDirectory = "/home/" + username;
 
   home.packages = [
@@ -126,6 +127,7 @@
     pkgs.xorg.xkill
     pkgs.xorg.xmodmap
     pkgs.xsettingsd
+    pkgs.yt-dlp
     pkgs.zotero
   ];
 
@@ -229,6 +231,7 @@
     };
   };
 
+
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
   programs.direnv.enableBashIntegration = true;
@@ -268,6 +271,18 @@
     '';
   };
 
+  # use bash as login shell but exec fish when interactive
+  programs.bash = {
+    initExtra = ''
+    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+    then
+      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+    fi
+  '';
+  };
+
+
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
@@ -277,5 +292,4 @@
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "24.11";
-  #home.stateVersion = "18.09";
 }

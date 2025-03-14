@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -234,6 +234,7 @@
   services.fstrim.enable = true;
   services.openssh.enable = true;
   programs.dconf.enable = true;
+  programs.fish.enable = true;
 
   # Automatically creates a loader in /lib/* to avoid patching stuff
   # To disable it temporarily use
@@ -372,11 +373,16 @@
     enable32Bit = true;
   };
 
-  # Enable the X11 windowing system.
+  # let
+  #   entdasLayout = pkgs.runCommand "keyboard-layout" {} ''
+  #                    ${pkgs.xorg.xkbcomp}/bin/xkbcomp ${../entdas.xkb} $out
+  # '';
+  # in
+  #   services.xserver.displayManager.sessionCommands = "${pkgs.xorg.xkbcomp}/bin/xkbcomp ${entdasLayout} $DISPLAY";
+
   services.xserver = {
-    exportConfiguration = true;
+    exportConfiguration = lib.mkDefault true;
     enable = true;
-    xkb.layout = "fi";
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
     videoDrivers = ["amdgpu"];
@@ -395,9 +401,27 @@
 #    Section "Device"
       Option "SWCursor" "on"
       Option "HWCursor" "off"
+      Option "TearFree" "true"
       Option "VariableRefresh" "true"
 #    EndSection
     '';
+
+    xkb = {
+      layout = "fi";
+      variant = "entdas,";
+
+      extraLayouts.entdas = {
+          description = "Custom das layout";
+          languages = ["fi"];
+          symbolsFile = ../entdas;
+      };
+
+      extraLayouts.fi-greek = {
+        description = "Fi with alt-gr greek";
+        languages = ["fi"];
+        symbolsFile = ../fi-greek;
+      };
+    };
   };
 
   # services.xserver.xkbOptions = "eurosign:e";
