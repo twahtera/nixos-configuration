@@ -1,6 +1,6 @@
 xkb_symbols "fi-greek"
 {
-  include "fi(basic)"            // includes the base fi keys
+  include "us(basic)"            // includes the base fi keys
   include "level3(ralt_switch)"  // configures right alt as a third level switch
 
   key <LatA> { [ a, A, Greek_alpha ] };
