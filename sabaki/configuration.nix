@@ -138,6 +138,7 @@
   services.syncthing = {
     enable = true;
     user = "ent";
+    shell = pkgs.fish;
     group = "users";
     openDefaultPorts = true;
     configDir = "/home/ent/.config/syncthing";

@@ -100,6 +100,7 @@
     isNormalUser = true;
     description = "Tuukka Wahtera";
     extraGroups = [ "networkmanager" "wheel" "docker"];
+    shell = pkgs.fish;
     packages = with pkgs; [
 	    git
       rxvt-unicode

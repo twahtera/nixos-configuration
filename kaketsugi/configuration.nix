@@ -445,6 +445,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ent = {
     isNormalUser = true;
+    shell = pkgs.fish;
     home = "/home/ent";
     extraGroups = ["wheel" "libvirtd" "video" "plugdev" "docker" "jackaudio" "dialout"];
   };

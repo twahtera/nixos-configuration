@@ -162,6 +162,7 @@
     enable = true;
 
     user = "twah";
+    shell = pkgs.fish;
     group = "users";
     openDefaultPorts = true;
     configDir = "/home/twah/.config/syncthing";
