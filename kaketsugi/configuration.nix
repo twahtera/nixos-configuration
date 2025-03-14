@@ -416,10 +416,10 @@
           symbolsFile = ../entdas;
       };
 
-      extraLayouts.fi-greek = {
+      extraLayouts.us-greek = {
         description = "Fi with alt-gr greek";
-        languages = ["fi"];
-        symbolsFile = ../fi-greek;
+        languages = ["eng"];
+        symbolsFile = ../us-greek;
       };
     };
   };

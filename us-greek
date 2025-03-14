@@ -1,4 +1,4 @@
-xkb_symbols "fi-greek"
+xkb_symbols "us-greek"
 {
   include "us(basic)"            // includes the base fi keys
   include "level3(ralt_switch)"  // configures right alt as a third level switch
