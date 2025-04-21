@@ -373,15 +373,8 @@
     enable32Bit = true;
   };
 
-  # let
-  #   entdasLayout = pkgs.runCommand "keyboard-layout" {} ''
-  #                    ${pkgs.xorg.xkbcomp}/bin/xkbcomp ${../entdas.xkb} $out
-  # '';
-  # in
-  #   services.xserver.displayManager.sessionCommands = "${pkgs.xorg.xkbcomp}/bin/xkbcomp ${entdasLayout} $DISPLAY";
-
   services.xserver = {
-    exportConfiguration = lib.mkDefault true;
+    exportConfiguration = lib.mkForce true;
     enable = true;
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
@@ -407,24 +400,15 @@
     '';
 
     xkb = {
-      layout = "fi";
-      variant = "entdas,";
+      layout ="entdas";
 
       extraLayouts.entdas = {
           description = "Custom das layout";
           languages = ["fi"];
-          symbolsFile = ../entdas;
-      };
-
-      extraLayouts.us-greek = {
-        description = "Fi with alt-gr greek";
-        languages = ["eng"];
-        symbolsFile = ../us-greek;
+          symbolsFile = ../entdas.xkb;
       };
     };
   };
-
-  # services.xserver.xkbOptions = "eurosign:e";
 
   documentation.info.enable = true;
 

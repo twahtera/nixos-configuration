@@ -1,8 +1,9 @@
 xkb_symbols "entdas" {
-    include "pc+fi+inet(evdev)"
+//    include "pc+fi+inet(evdev)"
+    include "fi"
     include "terminate(ctrl_alt_bksp)"
 
-    name[group1]="Finnish (entdas)";
+    name[group1]="entdas";
     
 
     key  <ESC> {
