@@ -114,8 +114,6 @@
 
   services.ollama = {
     enable = true;
-
-    
   };
 
   # services.openvpn.servers.tofumanDevVpn.config = "/home/ent/download/cvpn-endpoint-0d73c35031acbf471.ovpn";
@@ -398,16 +396,6 @@
       Option "VariableRefresh" "true"
 #    EndSection
     '';
-
-    xkb = {
-      layout ="entdas";
-
-      extraLayouts.entdas = {
-          description = "Custom das layout";
-          languages = ["fi"];
-          symbolsFile = ../entdas.xkb;
-      };
-    };
   };
 
   documentation.info.enable = true;
