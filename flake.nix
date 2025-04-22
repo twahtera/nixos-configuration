@@ -59,19 +59,5 @@
       ];
     };
     
-    nixosConfigurations.seki = nixpkgs.lib.nixosSystem {
-      system = "x86_64-GNU/Linux";
-      modules = [
-        ./seki/configuration.nix
-        ./keyboard-config.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.ent = import ./home.nix {username = "ent";};
-        }
-      ];
-    };
   };
 }
