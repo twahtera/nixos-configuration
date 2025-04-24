@@ -18,12 +18,9 @@
       system = "x86_64-GNU/Linux";
       modules = [
         ./furikawari/configuration.nix
-        ./keyboard-config.nix
+        ./common.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
           home-manager.users.twah = import ./home.nix {username = "twah";};
         }
       ];
@@ -33,12 +30,9 @@
       system = "x86_64-GNU/Linux";
       modules = [
         ./sabaki/configuration.nix
-        ./keyboard-config.nix
+        ./common.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
           home-manager.users.ent = import ./home.nix {username = "ent";};
         }
       ];
@@ -48,12 +42,9 @@
       system = "x86_64-GNU/Linux";
       modules = [
         ./kaketsugi/configuration.nix
-        ./keyboard-config.nix
+        ./common.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
           home-manager.users.ent = import ./home.nix {username = "ent";};
         }
       ];
