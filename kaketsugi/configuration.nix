@@ -16,7 +16,7 @@
   };
 
   swapDevices = [{
-    device = "/home/swapfile";
+    device = "/dev/disk/by-id/wwn-0x500a0751e6ab93d2-part2";
   }];
 
   powerManagement.cpuFreqGovernor = "performance";
@@ -24,7 +24,7 @@
   # fileSystems."/home".device = "/dev/disk/by-label/home";
   fileSystems."/home".device = "/dev/disk/by-uuid/fba97cf9-9f6e-41a3-95ee-954da238fa5d";
   # fileSystems."/vm".device = "/dev/disk/by-label/win";
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "/dev/disk/by-id/ata-Samsung_SSD_850_EVO_500GB_S21JNXAGB12956A";
 
 
   boot.kernelParams = ["nordrand"];
@@ -43,24 +43,6 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
-
-  virtualisation.docker.enable = true;
-
-  # virtualisation.libvirtd = {
-  #   enable = true;
-  #   qemu = {
-  #     package = pkgs.qemu_kvm;
-  #     runAsRoot = true;
-  #     swtpm.enable = true;
-  #     ovmf = {
-  #       enable = true;
-  #       packages = [(pkgs.OVMF.override {
-  #         secureBoot = true;
-  #         tpmSupport = true;
-  #       }).fd];
-  #     };
-  #   };
-  # };
 
 
   programs.virt-manager.enable = true;
@@ -118,59 +100,16 @@
 
   # services.openvpn.servers.tofumanDevVpn.config = "/home/ent/download/cvpn-endpoint-0d73c35031acbf471.ovpn";
 
-  # Select internationalisation properties.
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "fi";
-  };
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    supportedLocales = ["en_US.UTF-8/UTF-8"];
-    extraLocaleSettings = {
-      LC_CTYPE = "en_US.UTF-8";
-      LC_ALL = "en_US.UTF-8";
-    };
-  };
-
   fonts.fontconfig.defaultFonts.emoji = [ "Noto Color Emoji" ];
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-emoji
   ];
 
-  # Set your time zone.
-  time.timeZone = "Europe/Helsinki";
-
   environment = {
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
-    systemPackages = with pkgs; [
-      polkit_gnome
-      sudo
-      man-pages
-      rxvt-unicode-unwrapped
-
-      xorg.xmodmap
-      dmenu
-
-      haskellPackages.xmonad
-
-      #OVMF
-
-      emacs
-
-      #    amdgpu
-      #libGL
-
-      gnumake
-      git
-      gcc
-      ncurses
-
-      ntfs3g
-
-      home-manager
-    ];
+    systemPackages = with pkgs; [ ];
     sessionVariables = {
       GTK_IM_MODULE="ibus";
       QT_IM_MODULE="ibus";
@@ -178,61 +117,12 @@
   };
 
 
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-  
-  # hardware.pulseaudio = {
-  #   enable = true;
-  #   package = pkgs.pulseaudio.override { jackaudioSupport = true; };
-  # };
-
-  # services.jack = {
-  #   jackd.enable = true;
-  #   alsa.enable = false;
-  #   loopback = {
-  #     enable = true;
-  #   };
-  # };
-
-  # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
-  #sound.enable = false;
-
-  # rtkit is optional but recommended
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-  };
-
-
-  # List services that you want to enable:
-
-  # services.openvpn.servers = {
-  #   mullvad = {
-  #     autoStart = false;
-  #     updateResolvConf = true;
-  #     config = '' config /root/mullvad_config_linux_fi_hel '';
-  #   };
-  # };
-
   services.mullvad-vpn.enable = true;
 
   services.ratbagd.enable = true; # configuration service for logitech mice
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [ gutenprint ];
-  };
 
-  services.fstrim.enable = true;
   services.openssh.enable = true;
   programs.dconf.enable = true;
-  programs.fish.enable = true;
 
   # Automatically creates a loader in /lib/* to avoid patching stuff
   # To disable it temporarily use
@@ -373,9 +263,6 @@
 
   services.xserver = {
     exportConfiguration = lib.mkForce true;
-    enable = true;
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.enableContribAndExtras = true;
     videoDrivers = ["amdgpu"];
     config = ''
       Section "InputClass"
@@ -397,10 +284,6 @@
 #    EndSection
     '';
   };
-
-  documentation.info.enable = true;
-
-  services.xserver.displayManager.lightdm.enable = true;
 
   services.syncthing = {
     enable = true;

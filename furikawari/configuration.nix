@@ -31,24 +31,6 @@
   programs.kdeconnect.enable = true;
   programs.fish.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Helsinki";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fi_FI.UTF-8";
-    LC_IDENTIFICATION = "fi_FI.UTF-8";
-    LC_MEASUREMENT = "fi_FI.UTF-8";
-    LC_MONETARY = "fi_FI.UTF-8";
-    LC_NAME = "fi_FI.UTF-8";
-    LC_NUMERIC = "fi_FI.UTF-8";
-    LC_PAPER = "fi_FI.UTF-8";
-    LC_TELEPHONE = "fi_FI.UTF-8";
-    LC_TIME = "fi_FI.UTF-8";
-  };
-
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
@@ -62,24 +44,12 @@
   # Enable the GNOME Desktop Environment.
 
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "fi";
-    variant = "";
-  };
-
-  # Configure console keymap
-  console.keyMap = "fi";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -126,9 +96,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["root" "twah"];
 
   # List packages installed in system profile. To search, run:
@@ -147,7 +114,6 @@
   # };
 
   # List services that you want to enable:
-  virtualisation.docker.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.fwupd.enable = true;
