@@ -114,6 +114,7 @@
     pkgs.transmission_3-gtk
     pkgs.texlive.combined.scheme-full
     pkgs.unison-ucm
+    pkgs.rxvt-unicode-emoji
     pkgs.units
     pkgs.unzip
     pkgs.mpv
