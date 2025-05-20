@@ -44,6 +44,7 @@
     pkgs.file
     pkgs.fira-code # monospace font with ligatures
     pkgs.firefox
+    pkgs.foliate
     #(pkgs.freecad.override { spaceNavSupport = false; }) # spaceNavSupport causes segfault on start
     pkgs.freecad
     pkgs.peek
