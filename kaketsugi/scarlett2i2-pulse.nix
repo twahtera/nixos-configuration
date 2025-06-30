@@ -35,5 +35,5 @@
       deferred-volume-safety-margin-usec = "1";
       deferred-volume-extra-delay-usec = "0";
     };
-  hardware.pulseaudio.extraConfig = "load-module module-remap-sink sink_name=Scarlett_12 sink_properties=\"device.description='Scarlett Output 1/2 (Main)'\" remix=no master=alsa_output.usb-Focusrite_Scarlett_2i4_USB-00.analog-surround-40 channels=2 master_channel_map=front-left,front-right channel_map=front-left,front-right";
+  services.pulseaudio.extraConfig = "load-module module-remap-sink sink_name=Scarlett_12 sink_properties=\"device.description='Scarlett Output 1/2 (Main)'\" remix=no master=alsa_output.usb-Focusrite_Scarlett_2i4_USB-00.analog-surround-40 channels=2 master_channel_map=front-left,front-right channel_map=front-left,front-right";
 }

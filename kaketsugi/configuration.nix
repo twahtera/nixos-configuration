@@ -329,7 +329,7 @@
 
     # Rule for the Ergodox EZ Original / Shine / Glow
     SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", GROUP="plugdev"
-     Rule for the Planck EZ Standard / Glow
+    # Rule for the Planck EZ Standard / Glow
     SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", GROUP="plugdev"
 
     # Rule for the stlink programmer

@@ -40,6 +40,8 @@
 
     fstrim.enable = true;
 
+    displayManager.gdm.enable = true;
+    
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -68,7 +70,6 @@
       windowManager.xmonad.enable = true;
       windowManager.xmonad.enableContribAndExtras = true;
 
-      displayManager.gdm.enable = true;
     };
   };
 
