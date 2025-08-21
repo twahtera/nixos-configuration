@@ -40,13 +40,21 @@
 
     fstrim.enable = true;
 
-    xserver.displayManager.lightdm = {
+    autorandr = {
       enable = true;
-      greeters.slick = {
+    };
+      
+    xserver.displayManager = {
+      lightdm = {
         enable = true;
-        cursorTheme.name = "capitaine-cursors";
-        cursorTheme.size = 32;
+        greeters.slick = {
+          enable = true;
+          cursorTheme.name = "capitaine-cursors";
+          cursorTheme.size = 32;
+        };
       };
+      #setupCommands = "xrandr -s 3840x2160 -r 240";
+      sessionCommands = "autorandr -c";
     };
     
     pipewire = {
