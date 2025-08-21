@@ -40,7 +40,14 @@
 
     fstrim.enable = true;
 
-    displayManager.gdm.enable = true;
+    xserver.displayManager.lightdm = {
+      enable = true;
+      greeters.slick = {
+        enable = true;
+        cursorTheme.name = "capitaine-cursors";
+        cursorTheme.size = 32;
+      };
+    };
     
     pipewire = {
       enable = true;
@@ -79,5 +86,9 @@
 
   virtualisation.docker.enable = true;
   security.rtkit.enable = true;
+
+  environment = {
+    systemPackages = with pkgs; [ capitaine-cursors ];
+  };
 
 }
