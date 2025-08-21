@@ -40,10 +40,6 @@
 
     fstrim.enable = true;
 
-    autorandr = {
-      enable = true;
-    };
-      
     xserver.displayManager = {
       lightdm = {
         enable = true;
@@ -53,8 +49,6 @@
           cursorTheme.size = 32;
         };
       };
-      #setupCommands = "xrandr -s 3840x2160 -r 240";
-      sessionCommands = "autorandr -c";
     };
     
     pipewire = {
