@@ -146,6 +146,11 @@
     x11.enable = true;
   };
 
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableFishIntegration = true;
+  };
+  
   # Also set GTK theme settings
   gtk = {
     enable = true;
