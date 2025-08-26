@@ -110,7 +110,10 @@
   environment = {
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
-    systemPackages = with pkgs; [ ];
+    systemPackages = with pkgs; [
+      kubectl
+      minikube
+    ];
     sessionVariables = {
       GTK_IM_MODULE="ibus";
       QT_IM_MODULE="ibus";
