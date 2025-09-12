@@ -32,12 +32,6 @@
   programs.fish.enable = true;
 
   services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    #desktopManager.gnome.enable = true;
-
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.enableContribAndExtras = true;
     deviceSection = ''Option "TearFree" "true"''; # For amdgpu.
   };
   

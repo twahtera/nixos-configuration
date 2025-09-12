@@ -76,6 +76,7 @@
           symbolsFile = ./entdas.xkb;
         };
       };
+
       windowManager.xmonad.enable = true;
       windowManager.xmonad.enableContribAndExtras = true;
 
