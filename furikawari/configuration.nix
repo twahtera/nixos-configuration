@@ -35,9 +35,8 @@
     deviceSection = ''Option "TearFree" "true"''; # For amdgpu.
   };
   
-  # Enable the GNOME Desktop Environment.
-
-
+  security.polkit.enable = true;
+  programs.dconf.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   

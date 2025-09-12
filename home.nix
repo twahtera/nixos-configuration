@@ -71,7 +71,7 @@
     pkgs.libreoffice-still
     pkgs.lorri
     pkgs.lm_sensors
-    pkgs.spotifywm
+    #pkgs.spotifywm
     #pkgs.super-slicer
     pkgs.microsoft-edge
     #pkgs.musescore
