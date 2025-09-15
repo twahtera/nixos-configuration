@@ -149,6 +149,9 @@
   programs.kitty = {
     enable = true;
     shellIntegration.enableFishIntegration = true;
+    settings = {
+      confirm_os_window_close = 0;
+    };
   };
   
   # Also set GTK theme settings
