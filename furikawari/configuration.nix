@@ -94,6 +94,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    wireguard-tools
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
@@ -116,6 +117,36 @@
     muteKernelMessages = true;
     allowAnyUser = true;
   };
+
+  # rescomms wireguard setup
+  networking.firewall = {
+    allowedUDPPorts = [51820];
+  };
+
+  virtualisation.docker.enable = false;  
+  networking.wg-quick.interfaces =
+    {
+      qa = {
+        configFile = "/etc/wireguard/qa.conf";
+        autostart = true;
+      };
+    };
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      [Resolve]
+      DNS=10.1.207.173
+      Domains=~qa.rescomms-internal.com
+    '';
+  };
+  networking.networkmanager.dns = "systemd-resolved";
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+    ];
+  };
+  
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
