@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../nix-ld.nix
     ];
 
   # Bootloader.
@@ -67,6 +68,7 @@
     shell = pkgs.fish;
     packages = with pkgs; [
 	    git
+      steam-run
       rxvt-unicode
     #  thunderbird
     ];
@@ -123,7 +125,6 @@
     allowedUDPPorts = [51820];
   };
 
-  virtualisation.docker.enable = false;  
   networking.wg-quick.interfaces =
     {
       qa = {
@@ -140,11 +141,15 @@
     '';
   };
   networking.networkmanager.dns = "systemd-resolved";
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc.lib
+
+  virtualisation.docker.daemon.settings = {
+    default-address-pools = [
+      {
+        base = "10.10.0.0/16";
+        size = 24;
+      }
     ];
+    bip = "10.10.1.1/24";
   };
   
   system.stateVersion = "24.05"; # Did you read the comment?
