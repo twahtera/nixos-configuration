@@ -129,15 +129,20 @@
     {
       qa = {
         configFile = "/etc/wireguard/qa.conf";
-        autostart = true;
+      };
+      dev = {
+        configFile = "/etc/wireguard/dev.conf";
+      };
+      ext = {
+        configFile = "/etc/wireguard/ext.conf";
       };
     };
   services.resolved = {
     enable = true;
     extraConfig = ''
       [Resolve]
-      DNS=10.1.207.173
-      Domains=~qa.rescomms-internal.com
+      DNS=10.0.196.239 10.1.207.173 10.4.202.123
+      Domains=~dev.rescomms-internal.com ~qa.rescomms-internal.com ~ext.rescomms-internal.com
     '';
   };
   networking.networkmanager.dns = "systemd-resolved";
