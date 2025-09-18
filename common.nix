@@ -40,17 +40,6 @@
 
     fstrim.enable = true;
 
-    xserver.displayManager = {
-      lightdm = {
-        enable = true;
-        greeters.slick = {
-          enable = true;
-          cursorTheme.name = "capitaine-cursors";
-          cursorTheme.size = 32;
-        };
-      };
-    };
-    
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -76,14 +65,21 @@
           symbolsFile = ./entdas.xkb;
         };
       };
+
+      displayManager = {
+        lightdm = {
+          enable = true;
+          greeters.slick = {
+            enable = true;
+            cursorTheme.name = "capitaine-cursors";
+            cursorTheme.size = 32;
+          };
+        };
+      };
+      desktopManager.xfce.enable = true;    
       windowManager.xmonad.enable = true;
       windowManager.xmonad.enableContribAndExtras = true;
-
     };
-  };
-
-  hardware = {
-
   };
 
   virtualisation.docker.enable = true;
@@ -92,5 +88,4 @@
   environment = {
     systemPackages = with pkgs; [ capitaine-cursors ];
   };
-
 }

@@ -71,7 +71,7 @@
     pkgs.libreoffice-still
     pkgs.lorri
     pkgs.lm_sensors
-    pkgs.spotifywm
+    #pkgs.spotifywm
     #pkgs.super-slicer
     pkgs.microsoft-edge
     #pkgs.musescore
@@ -149,6 +149,9 @@
   programs.kitty = {
     enable = true;
     shellIntegration.enableFishIntegration = true;
+    settings = {
+      confirm_os_window_close = 0;
+    };
   };
   
   # Also set GTK theme settings

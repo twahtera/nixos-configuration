@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../nix-ld.nix
     ];
 
   # Bootloader.
@@ -32,18 +33,11 @@
   programs.fish.enable = true;
 
   services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    #desktopManager.gnome.enable = true;
-
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.enableContribAndExtras = true;
     deviceSection = ''Option "TearFree" "true"''; # For amdgpu.
   };
   
-  # Enable the GNOME Desktop Environment.
-
-
+  security.polkit.enable = true;
+  programs.dconf.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   
@@ -74,6 +68,7 @@
     shell = pkgs.fish;
     packages = with pkgs; [
 	    git
+      steam-run
       rxvt-unicode
     #  thunderbird
     ];
@@ -101,6 +96,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    wireguard-tools
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
@@ -123,6 +119,44 @@
     muteKernelMessages = true;
     allowAnyUser = true;
   };
+
+  # rescomms wireguard setup
+  networking.firewall = {
+    allowedUDPPorts = [51820];
+  };
+
+  networking.wg-quick.interfaces =
+    {
+      qa = {
+        configFile = "/etc/wireguard/qa.conf";
+      };
+      dev = {
+        configFile = "/etc/wireguard/dev.conf";
+      };
+      ext = {
+        configFile = "/etc/wireguard/ext.conf";
+      };
+    };
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      [Resolve]
+      DNS=10.0.196.239 10.1.207.173 10.4.202.123
+      Domains=~dev.rescomms-internal.com ~qa.rescomms-internal.com ~ext.rescomms-internal.com
+    '';
+  };
+  networking.networkmanager.dns = "systemd-resolved";
+
+  virtualisation.docker.daemon.settings = {
+    default-address-pools = [
+      {
+        base = "10.10.0.0/16";
+        size = 24;
+      }
+    ];
+    bip = "10.10.1.1/24";
+  };
+  
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
