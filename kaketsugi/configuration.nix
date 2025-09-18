@@ -322,12 +322,6 @@
 
   security.polkit.enable = true;
 
-  security.sudo.extraConfig = 
-    ''
-  %libvirtd ALL = NOPASSWD:  /run/current-system/sw/bin/virsh start win
-                            
-  '';
-
   services.udev.extraRules =
     ''
     # Teensy rules for the Ergodox EZ programming
