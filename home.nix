@@ -35,6 +35,7 @@
     pkgs.gcc
     pkgs.dbeaver-bin
     pkgs.bind
+    pkgs.bruno
     pkgs.dmenu
     pkgs.evince
     (pkgs.emacs30.override { imagemagick = pkgs.imagemagickBig; })
@@ -124,6 +125,7 @@
     pkgs.mpv
     pkgs.v4l-utils
     pkgs.vlc
+    pkgs.vscode
     pkgs.wally-cli # flasher for ergodox
     pkgs.wrk2
     pkgs.whois
