@@ -23,6 +23,7 @@
 
 #    pkgs.automake
     pkgs.bashmount
+    pkgs.brightnessctl
 #    pkgs.beekeeper-studio
     #pkgs.binutils-unwrapped
     pkgs.bitwarden-desktop
@@ -36,6 +37,7 @@
     pkgs.dbeaver-bin
     pkgs.bind
     pkgs.bruno
+    pkgs.bluetui
     pkgs.dmenu
     pkgs.evince
     (pkgs.emacs30.override { imagemagick = pkgs.imagemagickBig; })
@@ -125,7 +127,6 @@
     pkgs.mpv
     pkgs.v4l-utils
     pkgs.vlc
-    pkgs.vscode
     pkgs.wally-cli # flasher for ergodox
     pkgs.wrk2
     pkgs.whois
@@ -139,6 +140,11 @@
     pkgs.yt-dlp
     pkgs.zotero
   ];
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhs;
+  };
 
   # Configure cursor theme and size
   home.pointerCursor = {
