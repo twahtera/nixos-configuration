@@ -25,7 +25,7 @@
     pkgs.bashmount
 #    pkgs.beekeeper-studio
     #pkgs.binutils-unwrapped
-    pkgs.bitwarden
+    pkgs.bitwarden-desktop
     pkgs.cachix
     pkgs.cantarell-fonts
     pkgs.chromium
@@ -92,7 +92,7 @@
     pkgs.openscad
     pkgs.openvpn
     pkgs.pandoc
-    pkgs.poppler_utils
+    pkgs.poppler-utils
     pkgs.pavucontrol
     pkgs.plantuml
     pkgs.piper # control logitech mouse
@@ -116,7 +116,7 @@
     #pkgs.syncthing-gtk
     pkgs.sqlite
     pkgs.tree
-    pkgs.transmission_3-gtk
+    pkgs.transmission_4-gtk
     pkgs.texlive.combined.scheme-full
     pkgs.unison-ucm
     pkgs.rxvt-unicode-emoji

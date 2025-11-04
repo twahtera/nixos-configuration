@@ -14,7 +14,13 @@
   boot.loader.grub = {
     configurationLimit = 8;
     useOSProber = true;
+    extraEntries = ''
+      menuentry "Windows" {
+        chainloader (hd2,1)+1
+      }
+    '';
   };
+
 
   swapDevices = [{
     device = "/dev/disk/by-id/wwn-0x500a0751e6ab93d2-part2";
@@ -105,7 +111,7 @@
   fonts.fontconfig.defaultFonts.emoji = [ "Noto Color Emoji" ];
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
   ];
 
   environment = {
