@@ -82,7 +82,6 @@
     pkgs.microsoft-edge
     #pkgs.musescore
     pkgs.mcelog
-    pkgs.mpv
     pkgs.ncmpcpp
     pkgs.ncspot
     pkgs.mullvad-vpn
@@ -169,6 +168,13 @@
       "map ctrl+shift+3" = "set_colors ~/.config/kitty/Aquarium\\ Dark.conf";
       "map ctrl+shift+4" = "set_colors ~/.config/kitty/Afterglow.conf";
 
+    };
+  };
+
+  programs.mpv = {
+    enable = true;
+    bindings = {
+      MBTN_LEFT = "cycle pause";
     };
   };
   
