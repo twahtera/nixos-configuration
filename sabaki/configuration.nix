@@ -47,7 +47,7 @@
     enableTearFree = true;
   };
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
 
   # Enable touchpad support (enabled default in most desktopManager).
