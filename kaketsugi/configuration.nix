@@ -130,8 +130,6 @@
 
   services.mullvad-vpn.enable = true;
 
-  services.ratbagd.enable = true; # configuration service for logitech mice
-
   services.openssh.enable = true;
   programs.dconf.enable = true;
 
@@ -143,18 +141,27 @@
     enable32Bit = true;
   };
 
+  services.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "1"; # maximum acelSpeed is 1
+      # transformationMatrix = "2 0 0 0 2 0 0 0 1"; # for more speed
+    };
+  };
+  
   services.xserver = {
     exportConfiguration = lib.mkForce true;
     videoDrivers = ["amdgpu"];
-    config = ''
-      Section "InputClass"
-        Identifier "My Mouse"
-        Driver "libinput"
-        MatchIsPointer "yes"
-        Option "AccelProfile" "flat"
-        Option "AccelSpeed" "-1"
-      EndSection
-    '';
+    # config = ''
+    #   Section "InputClass"
+    #     Identifier "My Mouse"
+    #     Driver "libinput"
+    #     MatchIsPointer "yes"
+    #     Option "AccelProfile" "flat"
+    #     Option "AccelSpeed" "-1"
+    #   EndSection
+    # '';
 
     deviceSection = ''
       #Option "SWCursor" "on"

@@ -96,7 +96,6 @@
     pkgs.poppler-utils
     pkgs.pavucontrol
     pkgs.plantuml
-    pkgs.piper # control logitech mouse
     pkgs.powertop
     pkgs.postgresql_17
     pkgs.pgcli
