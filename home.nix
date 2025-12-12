@@ -162,6 +162,7 @@
     settings = {
       confirm_os_window_close = 0;
       allow_remote_control = true;
+      scrollback_lines = 100000;
       "map ctrl+shift+1" = "set_colors ~/.config/kitty/ANSI\\ 1987.conf";
       "map ctrl+shift+2" = "set_colors ~/.config/kitty/Adventure\\ Time.conf";
       "map ctrl+shift+3" = "set_colors ~/.config/kitty/Aquarium\\ Dark.conf";
