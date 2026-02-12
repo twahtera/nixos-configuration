@@ -357,6 +357,32 @@
     enable = true;
   };
 
+
+  programs.claude-code = {
+    enable = true;
+    settings = {
+      permissions = {
+        allow = [
+          "Bash(git diff:*)"
+          "Edit"
+        ];
+        ask = [
+          "Bash(git push:*)"
+        ];
+        defaultMode = "acceptEdits";
+        deny = [
+          "WebFetch"
+          "Bash(curl:*)"
+          "Read(./.env)"
+          "Read(*/.env)"
+          "Read(*/.envs/*)"
+          "Read(*/.envrc)"
+          "Read(./secrets/*)"
+        ];
+        disableBypassPermissionsMode = "disable";
+      };
+    };
+  };
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
