@@ -82,6 +82,17 @@
     };
   };
 
+  # services.pgadmin = {
+  #   enable = true;
+  #   initialEmail = "tuukka@wahtera.fi";
+  #   package = pkgs.pgadmin4;
+  # };
+
+  # services.postgresql = {
+  #   enable = true;
+  #   package = pkgs.postgresql_18
+  # }
+
   virtualisation.docker.enable = true;
   security.rtkit.enable = true;
 

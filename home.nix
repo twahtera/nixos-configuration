@@ -52,8 +52,6 @@
     #(pkgs.freecad.override { spaceNavSupport = false; }) # spaceNavSupport causes segfault on start
     pkgs.freecad
     pkgs.peek
-    #pkgs.pgadmin4
-    pkgs.pgmanage
     #pkgs.python39Full
     pkgs.ghc
     pkgs.gimp
