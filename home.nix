@@ -50,7 +50,7 @@
     pkgs.firefox
     pkgs.foliate
     #(pkgs.freecad.override { spaceNavSupport = false; }) # spaceNavSupport causes segfault on start
-    pkgs.freecad
+    #pkgs.freecad
     pkgs.peek
     #pkgs.python39Full
     pkgs.ghc
@@ -80,7 +80,6 @@
     pkgs.microsoft-edge
     #pkgs.musescore
     pkgs.mcelog
-    pkgs.ncmpcpp
     pkgs.ncspot
     pkgs.mullvad-vpn
     pkgs.mosh
