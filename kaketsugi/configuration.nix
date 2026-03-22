@@ -146,7 +146,6 @@
     mouse = {
       accelProfile = "flat";
       accelSpeed = "1"; # maximum acelSpeed is 1
-      # transformationMatrix = "2 0 0 0 2 0 0 0 1"; # for more speed
     };
   };
   
@@ -176,6 +175,18 @@
       Modeline "3840x2160_240.00" 2330.75  3840 3888 3920 4000  2160 2163 2168 2429 +hsync -vsync
       Option "PreferredMode" "3840x2160_240.00"
       Option "DPMS" "true"
+    '';
+    displayManager.sessionCommands = ''
+      for device_id in $(xinput list | awk '/SteelSeries SteelSeries Aerox 3 Wireless.*slave  pointer/ {match($0, /id=([0-9]+)/, arr); print arr[1]}'); do
+        echo "Setting device $device_id"
+        xinput set-prop "$device_id" "Coordinate Transformation Matrix" 2 0 0 0 2 0 0 0 1
+
+        if xinput list-props "$device_id" | grep -q "libinput Accel Profile Enabled"; then
+          echo "  - Setting accel profile to flat"
+          xinput set-prop "$device_id" "libinput Accel Profile Enabled" 0 1 0
+          xinput set-prop "$device_id" "libinput Accel Speed" 0
+        fi
+      done
     '';
   };
 
