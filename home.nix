@@ -50,10 +50,8 @@
     pkgs.firefox
     pkgs.foliate
     #(pkgs.freecad.override { spaceNavSupport = false; }) # spaceNavSupport causes segfault on start
-    pkgs.freecad
+    #pkgs.freecad
     pkgs.peek
-    #pkgs.pgadmin4
-    pkgs.pgmanage
     #pkgs.python39Full
     pkgs.ghc
     pkgs.gimp
@@ -82,7 +80,6 @@
     pkgs.microsoft-edge
     #pkgs.musescore
     pkgs.mcelog
-    pkgs.ncmpcpp
     pkgs.ncspot
     pkgs.mullvad-vpn
     pkgs.mosh
@@ -357,6 +354,32 @@
     enable = true;
   };
 
+
+  programs.claude-code = {
+    enable = true;
+    settings = {
+      permissions = {
+        allow = [
+          "Bash(git diff:*)"
+          "Edit"
+        ];
+        ask = [
+          "Bash(git push:*)"
+        ];
+        defaultMode = "acceptEdits";
+        deny = [
+          "WebFetch"
+          "Bash(curl:*)"
+          "Read(./.env)"
+          "Read(*/.env)"
+          "Read(*/.envs/*)"
+          "Read(*/.envrc)"
+          "Read(./secrets/*)"
+        ];
+        disableBypassPermissionsMode = "disable";
+      };
+    };
+  };
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
