@@ -11,6 +11,10 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
 
@@ -39,16 +43,18 @@
     };
     
     nixosConfigurations.kaketsugi = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
       system = "x86_64-GNU/Linux";
       modules = [
         ./kaketsugi/configuration.nix
         ./common.nix
+        inputs.microvm.nixosModules.host
+        ./modules/claude-sandbox.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.users.ent = import ./home.nix {username = "ent";};
         }
       ];
     };
-    
   };
 }

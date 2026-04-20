@@ -231,6 +231,13 @@
     \unset QUIET
     '';
 
+  home.file."bin" = {
+    enable = true;
+    executable = true;
+    recursive = true;
+    source = ./bin;
+  };
+
   xdg = {
     mime.enable = true;
     mimeApps.enable = true;

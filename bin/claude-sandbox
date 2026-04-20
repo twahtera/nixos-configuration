@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MOUNT_POINT="/home/ent/microvm-project"
+VM="claude-sandbox"
+
+PROJECT="${1:-$(pwd)}"
+PROJECT="$(realpath "$PROJECT")"
+
+if [[ ! -d "$PROJECT" ]]; then
+  echo "error: '$PROJECT' is not a directory" >&2
+  exit 1
+fi
+
+if systemctl is-active --quiet "microvm@${VM}"; then
+  echo "Stopping running VM..."
+  sudo systemctl stop "microvm@${VM}"
+fi
+
+if mountpoint -q "$MOUNT_POINT"; then
+  sudo umount "$MOUNT_POINT"
+fi
+
+sudo mount --bind "$PROJECT" "$MOUNT_POINT"
+echo "Project: $PROJECT"
+
+sudo systemctl start "microvm@${VM}"
+echo "VM starting — SSH: ssh ent@10.200.0.2"
