@@ -179,7 +179,7 @@
     displayManager.sessionCommands = ''
       for device_id in $(xinput list | awk '/SteelSeries SteelSeries Aerox 3 Wireless.*slave  pointer/ {match($0, /id=([0-9]+)/, arr); print arr[1]}'); do
         echo "Setting device $device_id"
-        xinput set-prop "$device_id" "Coordinate Transformation Matrix" 2 0 0 0 2 0 0 0 1
+        xinput set-prop "$device_id" "Coordinate Transformation Matrix" 1.5 0 0 0 1.5 0 0 0 1
 
         if xinput list-props "$device_id" | grep -q "libinput Accel Profile Enabled"; then
           echo "  - Setting accel profile to flat"
