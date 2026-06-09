@@ -101,7 +101,6 @@
     pkgs.ripgrep
     pkgs.rust-analyzer-unwrapped
     pkgs.obs-studio
-    pkgs.silver-searcher
     pkgs.prusa-slicer
     #pkgs.solvespace
     pkgs.sqlcmd
