@@ -26,7 +26,7 @@
     pkgs.brightnessctl
 #    pkgs.beekeeper-studio
     #pkgs.binutils-unwrapped
-    pkgs.bitwarden-desktop
+    #pkgs.bitwarden-desktop
     pkgs.cachix
     pkgs.cantarell-fonts
     pkgs.chromium
@@ -87,7 +87,7 @@
     pkgs.nmap
     pkgs.ntfsprogs
     pkgs.nodejs
-    pkgs.openscad
+    #pkgs.openscad
     pkgs.openvpn
     pkgs.pandoc
     pkgs.poppler-utils
@@ -125,11 +125,11 @@
     pkgs.wrk2
     pkgs.whois
     pkgs.wirelesstools
-    pkgs.xfce.thunar
-    pkgs.xorg.xbacklight
-    pkgs.xorg.xev
-    pkgs.xorg.xkill
-    pkgs.xorg.xmodmap
+    pkgs.thunar
+    pkgs.xbacklight
+    pkgs.xev
+    pkgs.xkill
+    pkgs.xmodmap
     pkgs.xsettingsd
     pkgs.yt-dlp
     pkgs.zotero

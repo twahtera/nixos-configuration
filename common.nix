@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -92,6 +92,11 @@
   #   enable = true;
   #   package = pkgs.postgresql_18
   # }
+
+  systemd.services.nix-daemon.serviceConfig = {
+    Nice = lib.mkForce 15;
+    IOSchedulingClass = lib.mkForce "idle";
+  };
 
   virtualisation.docker.enable = true;
   security.rtkit.enable = true;
