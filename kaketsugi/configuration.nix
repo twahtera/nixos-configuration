@@ -37,7 +37,7 @@
   boot.kernelParams = ["nordrand"];
   # "video=DisplayPort-1:3840x2160@240"
   #boot.kernelPackages = pkgs.linuxPackages-rt;
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   boot.kernelModules = [
     "amdgpu"
