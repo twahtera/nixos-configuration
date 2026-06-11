@@ -18,8 +18,6 @@
     pkgs.audacity
     #pkgs.awscli2
     pkgs.aws-iam-authenticator
-    pkgs.aider-chat
-
 
 #    pkgs.automake
     pkgs.bashmount
@@ -163,7 +161,6 @@
       "map ctrl+shift+2" = "set_colors ~/.config/kitty/Adventure\\ Time.conf";
       "map ctrl+shift+3" = "set_colors ~/.config/kitty/Aquarium\\ Dark.conf";
       "map ctrl+shift+4" = "set_colors ~/.config/kitty/Afterglow.conf";
-
     };
   };
 
