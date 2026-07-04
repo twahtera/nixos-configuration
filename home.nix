@@ -48,7 +48,7 @@
     pkgs.firefox
     pkgs.foliate
     #(pkgs.freecad.override { spaceNavSupport = false; }) # spaceNavSupport causes segfault on start
-    #pkgs.freecad
+    pkgs.freecad
     pkgs.peek
     #pkgs.python39Full
     pkgs.ghc
@@ -154,6 +154,7 @@
     shellIntegration.enableFishIntegration = true;
 
     settings = {
+      auto_reload_config = -1;
       confirm_os_window_close = 0;
       allow_remote_control = true;
       scrollback_lines = 100000;
