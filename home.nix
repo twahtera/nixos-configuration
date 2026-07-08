@@ -182,6 +182,9 @@
     QT_IM_MODULE="ibus";
     AWS_VAULT_BACKEND="file";
     AWS_SESSION_TOKEN_TTL="8h";
+
+    EDITOR="emacsclient";
+    VISUAL="emacsclient";
   };
 
   home.file.".local/share/applications/emacsclient.desktop".text =
@@ -356,6 +359,16 @@
 
   services.flameshot = {
     enable = true;
+  };
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        email = "tuukka@wahtera.fi";
+        name = "Tuukka Wahtera";
+      };
+    };
   };
 
 
