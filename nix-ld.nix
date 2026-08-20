@@ -20,19 +20,19 @@
       systemd
 
       # My own additions
-      xorg.libXcomposite
-      xorg.libXtst
-      xorg.libXrandr
-      xorg.libXext
-      xorg.libX11
-      xorg.libXfixes
+      libxcomposite
+      libxtst
+      libxrandr
+      libxext
+      libX11
+      libXfixes
       libGL
       libva
       pipewire
-      xorg.libxcb
-      xorg.libXdamage
-      xorg.libxshmfence
-      xorg.libXxf86vm
+      libxcb
+      libXdamage
+      libxshmfence
+      libXxf86vm
       libelf
 
       # Required
@@ -52,14 +52,14 @@
       # glibc_multi.bin # Seems to cause issue in ARM
 
       # # Without these it silently fails
-      xorg.libXinerama
-      xorg.libXcursor
-      xorg.libXrender
-      xorg.libXScrnSaver
-      xorg.libXi
-      xorg.libSM
-      xorg.libICE
-      gnome2.GConf
+      libxinerama
+      libxcursor
+      libxrender
+      libxscrnsaver
+      libxi
+      libSM
+      libice
+      #gnome2.GConf
       nspr
       nss
       cups
@@ -111,9 +111,9 @@
       SDL_mixer
       SDL2_ttf
       SDL2_mixer
-      libappindicator-gtk2
-      libdbusmenu-gtk2
-      libindicator-gtk2
+      #libappindicator-gtk2
+      #libdbusmenu-gtk2
+      #libindicator-gtk2
       libcaca
       libcanberra
       libgcrypt

@@ -50,7 +50,7 @@
     #(pkgs.freecad.override { spaceNavSupport = false; }) # spaceNavSupport causes segfault on start
     pkgs.freecad
     pkgs.peek
-    #pkgs.python39Full
+    pkgs.python3
     pkgs.ghc
     pkgs.gimp
     #pkgs.glxinfo
@@ -85,7 +85,7 @@
     pkgs.nmap
     pkgs.ntfsprogs
     pkgs.nodejs
-    #pkgs.openscad
+    pkgs.openscad
     pkgs.openvpn
     pkgs.pandoc
     pkgs.poppler-utils
@@ -140,6 +140,7 @@
 
   # Configure cursor theme and size
   home.pointerCursor = {
+    enable = true;
     name = "capitaine-cursors";
     package = pkgs.capitaine-cursors;
     size = 32;  # Adjust size as needed (32, 48, 64 are common)
