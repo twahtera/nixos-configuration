@@ -129,7 +129,15 @@
     pkgs.xkill
     pkgs.xmodmap
     pkgs.xsettingsd
-    pkgs.yt-dlp
+    (pkgs.yt-dlp.overrideAttrs (oldAttrs: rec {
+      version = "2026.08.19";
+      src = pkgs.fetchFromGitHub {
+        owner = "yt-dlp";
+        repo = "yt-dlp";
+        tag = version;
+        sha256 = "sha256-BM5ZeGTmHq+1xH6G/zsuCtjLgYgfRA11ya0zIHK5p4g=";
+      };
+    }))
     pkgs.zotero
   ];
 
