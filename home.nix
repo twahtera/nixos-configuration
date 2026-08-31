@@ -242,6 +242,70 @@
     \unset QUIET
     '';
 
+  home.file.".config/yt-dlp/plugins/yhdm/yt_dlp_plugins/extractor/fencingtv.py".text =
+    ''
+    from yt_dlp.extractor.common import InfoExtractor
+    from yt_dlp.utils import ExtractorError, parse_iso8601, traverse_obj
+
+
+    class FencingTVIE(InfoExtractor):
+        _VALID_URL = r'https?://(?:www\.)?fencingtv\.com/competitions/(?P<competition>[\w-]+)/rewatch/(?P<id>[\w-]+)'
+        _TESTS = [{
+            'url': 'https://fencingtv.com/competitions/asian-championship-2026/rewatch/mens-foil-teams-womens-epee-teams-finals',
+            'info_dict': {
+                'id': 'asian-championship-2026-mens-foil-teams-womens-epee-teams-finals',
+                'ext': 'mp4',
+                'title': str,
+            },
+            'skip': 'Requires a fencingtv.com account with access to the competition',
+        }]
+
+        def _real_extract(self, url):
+            competition_slug, block_slug = self._match_valid_url(url).group('competition', 'id')
+            display_id = f'{competition_slug}-{block_slug}'
+
+            webpage = self._download_webpage(url, display_id)
+            nuxt_data = self._search_nuxt_json(webpage, display_id)
+
+            competition = next((
+                item for query in traverse_obj(nuxt_data, ('state', '$svue-query', 'queries', ...))
+                for item in traverse_obj(query, ('state', 'data', 'body', 'data', lambda _, v: isinstance(v, dict)))
+                if item.get('slug') == competition_slug and isinstance(item.get('blocks'), list)
+            ), None)
+            if not competition:
+                raise ExtractorError('Unable to find competition data', video_id=display_id)
+
+            block = next((
+                block for block in competition['blocks']
+                if block.get('slug') == block_slug
+            ), None)
+            if not block:
+                raise ExtractorError('Unable to find block data', video_id=display_id)
+
+            stream_channels = self._download_json(
+                f'https://fencingtv.com/api/competition/competitions/{competition["id"]}/blocks/{block["id"]}/stream-channels',
+                display_id, note='Downloading stream channel list')
+            video_id = traverse_obj(stream_channels, ('data', 0, 'videoId'))
+            if not video_id:
+                raise ExtractorError('Unable to find video id', video_id=display_id)
+
+            playback = self._download_json(
+                f'https://fencingtv.com/api/video/videos/{video_id}/playback',
+                display_id, note='Downloading playback info')
+
+            formats, subtitles = self._extract_m3u8_formats_and_subtitles(
+                playback['url'], display_id, 'mp4')
+
+            return {
+                'id': display_id,
+                'title': f'{competition.get("name")} - {block.get("name")}' if competition.get('name') else block.get('name') or block_slug,
+                'description': block.get('description'),
+                'timestamp': traverse_obj(block, ('startDate', {parse_iso8601})),
+                'formats': formats,
+                'subtitles': subtitles,
+            }
+    '';
+
   home.file."bin" = {
     enable = true;
     executable = true;
