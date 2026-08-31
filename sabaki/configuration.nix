@@ -90,12 +90,11 @@
 
   services.syncthing = {
     enable = true;
-    user = "ent";
-    shell = pkgs.fish;
+    user = "twah";
     group = "users";
     openDefaultPorts = true;
-    configDir = "/home/ent/.config/syncthing";
-    dataDir = "/home/ent/.config/syncthing/db";
+    configDir = "/home/twah/.config/syncthing";
+    dataDir = "/home/twah/.config/syncthing/db";
   };
 
   # Graphics related stuff

@@ -38,7 +38,7 @@
     pkgs.bluetui
     pkgs.dmenu
     pkgs.evince
-    (pkgs.emacs30.override { imagemagick = pkgs.imagemagickBig; })
+    (pkgs.emacs31.override { imagemagick = pkgs.imagemagickBig; })
 
     #pkgs.eagle
     pkgs.exiftool
@@ -73,10 +73,11 @@
     pkgs.libreoffice-still
     pkgs.lorri
     pkgs.lm_sensors
+    pkgs.rsbkb
     #pkgs.spotifywm
     #pkgs.super-slicer
-    pkgs.microsoft-edge
     #pkgs.musescore
+    pkgs.mermaid-cli
     pkgs.mcelog
     pkgs.ncspot
     pkgs.mullvad-vpn
@@ -139,6 +140,7 @@
       };
     }))
     pkgs.zotero
+    pkgs.zlib
   ];
 
   programs.vscode = {
