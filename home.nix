@@ -38,7 +38,7 @@
     pkgs.bluetui
     pkgs.dmenu
     pkgs.evince
-    (pkgs.emacs31.override { imagemagick = pkgs.imagemagickBig; })
+    (pkgs.emacs.override { imagemagick = pkgs.imagemagickBig; })
 
     #pkgs.eagle
     pkgs.exiftool

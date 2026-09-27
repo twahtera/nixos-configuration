@@ -21,7 +21,6 @@
     '';
   };
 
-
   swapDevices = [{
     device = "/dev/disk/by-id/wwn-0x500a0751e6ab93d2-part2";
   }];
@@ -54,6 +53,7 @@
 
 
   programs.virt-manager.enable = true;
+  programs.gamemode.enable = true;
 
   networking = {
     hostName = "kaketsugi";
