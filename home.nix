@@ -139,7 +139,7 @@
         sha256 = "sha256-BM5ZeGTmHq+1xH6G/zsuCtjLgYgfRA11ya0zIHK5p4g=";
       };
     }))
-    pkgs.zotero
+    #pkgs.zotero
     pkgs.zlib
   ];
 
