@@ -80,7 +80,9 @@
     nameservers = ["1.1.1.1" "1.0.0.1"];
     #iproute2.enable = true;
     firewall = {
-      allowedTCPPorts = [ 1433 ];
+      allowedTCPPorts = [
+        1433
+      ];
     };
   };
 
@@ -218,6 +220,22 @@
     configDir = "/home/ent/.config/syncthing";
     dataDir = "/home/ent/.config/syncthing/db";
   };
+
+  services.minidlna = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      media_dir = ["V,/home/ent/videos" "V,/home/ent/download/yt-dlp"];
+      inotify = "yes";
+      log_level = "error";
+      announceInterval = 05;
+    };
+  };
+
+  users.users.minidlna = {
+    extraGroups = [ "users" ]; # so minidlna can access the files.
+  };
+
 
   nix.settings.trusted-users = [ "root" "ent" ];
 
