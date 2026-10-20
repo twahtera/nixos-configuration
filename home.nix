@@ -15,7 +15,7 @@
     pkgs.aria2
 #    pkgs.arduino
 #    pkgs.autoconf
-    pkgs.audacity
+    #pkgs.audacity
     #pkgs.awscli2
     pkgs.aws-iam-authenticator
 
