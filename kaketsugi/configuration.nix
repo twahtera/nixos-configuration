@@ -8,7 +8,6 @@
   imports =
     [ ./hardware-configuration.nix
       ./scarlett2i2-pulse.nix
-      ../nix-ld.nix
     ];
 
   boot.loader.grub = {

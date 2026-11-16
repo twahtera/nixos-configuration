@@ -70,7 +70,7 @@
     pkgs.kitty-themes
     pkgs.keepassxc
     pkgs.libnotify
-    pkgs.libreoffice-still
+    pkgs.libreoffice-stable
     pkgs.lorri
     pkgs.lm_sensors
     pkgs.rsbkb
@@ -112,7 +112,7 @@
     pkgs.sqlite
     pkgs.tree
     pkgs.transmission_4-gtk
-    pkgs.texlive.combined.scheme-full
+    pkgs.texliveSmall
     pkgs.unison-ucm
     pkgs.rxvt-unicode-emoji
     pkgs.units
